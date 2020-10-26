@@ -1,3 +1,22 @@
+/* .checkmark{
+    width:20px;
+    height: 20px;
+    size:20px;
+    background-color:blue;
+} */
+/* input:checked ~ .checkmark {
+    width:20px;
+    height: 20px;
+    size:20px;
+    background-color:blue;
+
+} */
+/* input:checked ~ .checkmark:after {
+    display: block;
+} */
 .checkbox{
     background-color:blue;
+    color:blue;
+    margin-bottom:10px;
+    margin-right:11px;
 }

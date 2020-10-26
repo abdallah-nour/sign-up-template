@@ -2,11 +2,20 @@
     color:#696F79;
 }
 .btn{
+    /* border:0; */
     border-radius: 6px;
     margin-top:10px;
-    margin-bottom:14px;
+    margin-bottom:10px;
     width:425px;
     height:64px;
-    border:1px solid #8692A6;
-    padding-left:30px;
+    background-color:#1565D8;
+    font-size: 16px;
+    color:white;
+    cursor: pointer;
+}
+.btn:focus{
+    outline:0;
+}
+.btn:hover{
+    filter:brightness(85%);
 }

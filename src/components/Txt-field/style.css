@@ -1,0 +1,12 @@
+.label{
+    color:#696F79;
+}
+.txt-field{
+    border-radius: 6px;
+    margin-top:1px;
+    margin-bottom:10px;
+    width:425px;
+    height:60px;
+    border:1px solid #8692A6;
+    padding-left:30px;
+}

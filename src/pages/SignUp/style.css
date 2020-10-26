@@ -6,8 +6,17 @@
     font-family: 'Inter', sans-serif;
 }
 .container-signup{
-    background-color: #1565D8;
+    display: flex;
+    /* justify-content: center; */
+    width:100%;
+    max-width: 1440px;
+}
+.left{
     height:100vh;
+    padding: 45px;
+    background-color: #1565D8;
     width:45%;
 }
-
+.right{
+    padding: 10px 30px;
+}
