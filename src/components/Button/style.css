@@ -1,0 +1,12 @@
+.label{
+    color:#696F79;
+}
+.btn{
+    border-radius: 6px;
+    margin-top:10px;
+    margin-bottom:14px;
+    width:425px;
+    height:64px;
+    border:1px solid #8692A6;
+    padding-left:30px;
+}
