@@ -14,7 +14,7 @@ class SignUp extends Component {
           <div className='left'>
             <div className='left-container'>
               <Logo size="small"></Logo>
-              <Quote className="quote">
+              <Quote version='1'>
                 I always observe the people who pass by when I ride an escalator. I'll never see most of them again, so I imagine a lot of things about their lives... about the day ahead of them.
         </Quote>
             </div>

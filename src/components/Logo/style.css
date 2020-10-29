@@ -1,4 +1,14 @@
 .small{
+    fill:white;
+}
+.large{
+    fill:#1565D8;
+}
+.svg-large{
+    margin: 14px;
+    width:280px;
+}
+.svg-small{
     margin-left:34px;
-    /* width:250px; */
+    width:96px;
 }
