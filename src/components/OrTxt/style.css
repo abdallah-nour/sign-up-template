@@ -1,0 +1,15 @@
+.container-or-txt{
+    display: flex;
+    justify-content: space-between;
+    max-width: 425px;
+}
+.container-or-txt p{
+    font-size:14px;
+    color:#bababa;
+    text-align:center;
+}
+.container-or-txt hr{
+    border: 1px solid #F5F5F5;
+    width:43%;
+    margin:10px 0;
+}

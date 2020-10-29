@@ -4,7 +4,7 @@ import './style.css'
 function Logo ({size}){
     return(
         <a href="#">
-            <img className={size} src={image}/>
+            <img className={size+" logo"} src={image}/>
         </a>
     );
 }

@@ -5,18 +5,48 @@
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
 }
-.container-signup{
-    display: flex;
-    /* justify-content: center; */
+.content{
     width:100%;
+    margin:0px auto;
     max-width: 1440px;
 }
+.container-signup{
+    /* min-height: 100vh; */
+}
 .left{
-    height:100vh;
-    padding: 45px;
-    background-color: #1565D8;
-    width:45%;
+    background-image:url('../../images/Group\ 1.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width:100%;
+    min-height:100vh;
+}
+.left-container{
+    max-height:100vh;
+    max-width:450px;
+    margin:0px auto;
+    padding:45px 0 10px 0;
 }
 .right{
-    padding: 10px 30px;
+    margin:0px auto;
+}
+.right-container{
+    max-height:100vh;
+    margin:0px auto;
+    max-width:520px;
+    padding:35px 35px;
+}
+@media only screen and (min-width:820px){
+    .container-signup{display: flex;}
+    .left{
+    width:45%;
+    /* max-width:600px; */
+}
+.right{
+    padding:0px 30px;
+    width:55%;
+    max-width:600px;
+}
+.right-container{
+    padding:40px 0 10px 0;
+}
 }

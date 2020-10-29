@@ -1,21 +1,36 @@
 .label{
     color:#696F79;
 }
+.container-btn{
+    width:100%;
+    max-width:425px;
+}
 .btn{
-    /* border:0; */
+    width:100%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
     border-radius: 6px;
     margin-top:10px;
     margin-bottom:10px;
-    width:425px;
-    height:64px;
-    background-color:#1565D8;
+    height:7.5vh;
+    max-height:68px;
     font-size: 16px;
-    color:white;
     cursor: pointer;
+    /* max-width:425px; */
+}
+.btn:hover{
+    filter:brightness(80%)
 }
 .btn:focus{
     outline:0;
 }
-.btn:hover{
-    filter:brightness(85%);
+.icon{
+    position: absolute;
+    /* width:200px; */
+    margin-left:-13vw;
+    /* right:1%; */
+}
+@media only screen and (min-width:820px){
+    .icon{
+        margin-left:-100px;
+    }
 }

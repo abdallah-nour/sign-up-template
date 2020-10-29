@@ -1,16 +1,18 @@
 .container-q{
-    margin-left:32px;
-    margin-top:140px;
-    color:white;
+    margin:140px 25px 0;
+    position: relative;
 }
 .quote-txt{
     line-height: 38px;
-    width:370px;
+    max-width:370px;
 }
-
+.grid-img{
+    position: absolute;
+    right:15%;
+    top:-40%;
+}
 .quote-img2{
-    margin-left:350px;
-    margin-top:15px;
+    margin:15px 0 0 90%;
 }
 .quote-txt-writer{
     margin-top:30px;

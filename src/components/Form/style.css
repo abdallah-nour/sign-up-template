@@ -1,20 +1,30 @@
 .container-form{
-    margin-left:110px;
-    margin-top:10px;
+    margin:0 auto;
+    /* max-width: 60vh; */
 }
 .head-txt{
+    text-align:center;
     font-size:30px;
+    margin:10px 0;
 }
 .para{
-    width:370px;
-    font-size: 18px;
+    font-size: 16px;
+    text-align:center;
     font-weight: lighter;
     color:#8692A6;
-    margin-bottom:15px;
 }
-.or-txt{
-    font-size:14px;
-    /* margin-top:4px; */
-    color:#bababa;
-    text-align:center;
+.break-line{
+    border: 1px solid #F5F5F5;
+    width:100%;
+    max-width:425px;
+    margin:10px 0;
+}
+@media only screen and (min-width:820px){
+    .head-txt{
+        text-align: left; 
+    }
+    .para{
+        max-width:350px;
+        text-align: left;
+    }
 }
