@@ -11,11 +11,10 @@
     border-radius: 6px;
     margin-top:10px;
     margin-bottom:10px;
-    height:7.5vh;
+    height:8.5vh;
     max-height:68px;
     font-size: 16px;
     cursor: pointer;
-    /* max-width:425px; */
 }
 .btn:hover{
     filter:brightness(80%)

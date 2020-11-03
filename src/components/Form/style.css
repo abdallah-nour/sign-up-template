@@ -1,6 +1,7 @@
 .container-form{
     margin:0 auto;
-    /* max-width: 60vh; */
+    width:100%;
+    max-width:420px;
 }
 .head-txt{
     text-align:center;

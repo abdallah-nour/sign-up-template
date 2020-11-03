@@ -1,12 +1,8 @@
 .container-or-txt{
     display: flex;
     justify-content: space-between;
-    max-width: 425px;
-}
-.container-or-txt p{
-    font-size:14px;
-    color:#bababa;
-    text-align:center;
+    max-width: 350px;
+    margin: 0 auto;
 }
 .container-or-txt hr{
     border: 1px solid #F5F5F5;

@@ -1,0 +1,18 @@
+.power-container{
+    margin-bottom:15px;
+    display: none;
+}
+.fill-container{
+    position: relative;
+    width:100%;
+    height: 4px;
+    background-color: #C4C4C4;
+    border-radius: 4px;
+    margin-bottom:4px;
+}
+.fill{
+    border-radius: 4px;
+    position: absolute;
+    max-width:100%;
+    height: 4px;
+}

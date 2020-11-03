@@ -5,22 +5,15 @@
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
 }
-.content{
-    width:100%;
-    margin:0px auto;
-    max-width: 1440px;
-}
-.container-signup{
-    /* min-height: 100vh; */
-}
 .left{
     background-image:url('../../images/Group\ 1.svg');
     background-size: cover;
     background-repeat: no-repeat;
-    width:100%;
+    /* width:100%; */
     min-height:100vh;
 }
 .left-container{
+    position: relative;
     max-height:100vh;
     max-width:450px;
     margin:0px auto;
@@ -35,12 +28,10 @@
     max-width:520px;
     padding:35px 35px;
 }
+
 @media only screen and (min-width:820px){
-    .container-signup{display: flex;}
-    .left{
-    width:45%;
-    /* max-width:600px; */
-}
+    /* .content{display: flex;} */
+.left{width:45%;}
 .right{
     padding:0px 30px;
     width:55%;

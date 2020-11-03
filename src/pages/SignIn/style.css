@@ -1,20 +1,39 @@
-.container-signin{
-    margin:0 auto;
-    height:100vh;
-}
-.sign-in-left{
-    /* width: 100px; */
-    /* margin:10px 0 0 10px; */
-    /* margin:14px ; */
+.sign-in-left-container{
+    margin: 0 auto;
+    max-width: 460px;
 }
 .ps-image{
     position: relative;
-    bottom:100px;
+    bottom:17vmin;
     right:-55%;
     width:40%;
 }
+.sign-in-right-container{
+    margin: 0 auto;
+    width:100%;
+    max-width: 400px;
+    padding:50px 20px;
+}
+.page-divide{
+    display:block;    
+    margin:0 auto;
+    width:60%;
+    height:6px;
+    border:0;
+    background-color:rgb(70, 70, 70);
+}
 @media only screen and (min-width:820px){
-    .container-signin{
-        display: flex;
+    .sign-in-left{
+        padding: 10px 0 0 30px;
+        max-width: 45%;
+    }
+    .ps-image{
+        bottom:0;
+    }
+    .page-divide{
+        display:none;    
+    }
+    .sign-in-right{
+        max-width: 55%;
     }
 }

@@ -1,15 +1,38 @@
-.label{
-    color:#696F79;
-    display: block;
+.container-txt-field{
+    position: relative;
+    max-width:425px;
+    width:100%;
+    display: flex;
+    align-items: center;
+    flex-basis: auto;
 }
 .txt-field{
+    width:100%;
     border-radius: 6px;
     margin-top:1px;
     margin-bottom:10px;
-    width:100%;
-    max-width:425px;
     height:8vh;
     max-height:68px;
     border:1px solid #8692A6;
-    padding-left:30px;
+    padding:0 30px;
+    font-weight: 600;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
 }
+.valid-span{
+    display: none;
+    position: absolute;
+    right:5%;
+    height: 50%;
+    font-size:20px;
+}
+.txt-field:valid:focus[type='email']{
+    color:green;
+}
+.txt-field:invalid:not(:focus) ~ .valid-span{
+    display: inline;
+}
+
+
+
