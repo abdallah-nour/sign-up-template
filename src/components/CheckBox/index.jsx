@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
-// import './style.css';
+import Txt from '../Txt'
+import './style.css';
 class CheckBox extends Component {
+    state = {
+        isChecked: false,
+    }
+    handleChange = e => {
+        let { checked } = e.target;
+        this.setState({ isChecked: checked });
+    }
     render() {
+        let { children, name, marginTop } = this.props;
+        let { isChecked } = this.state;
         return (
             <div className="container-check">
-                <input className="checkbox" type='checkbox' checked/>
-                <label >I agree to terms & conditions</label>
+                <input name={name} className="checkbox" id={name} type='checkbox' defaultChecked={false} onChange={this.handleChange} style={{marginTop:marginTop}}
+                />
+                <label className="checkbox-txt" htmlFor={name}>{children}</label>
             </div>
         );
     }

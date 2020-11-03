@@ -1,14 +1,31 @@
 .container-form{
-    margin-left:150px;
-    margin-top:20px;
-}
-.para{
-    width:370px;
-    font-size: 18px;
-    font-weight: lighter;
-    color:#8692A6;
-    margin-bottom:27px;
+    margin:0 auto;
+    width:100%;
+    max-width:420px;
 }
 .head-txt{
+    text-align:center;
     font-size:30px;
+    margin:10px 0;
+}
+.para{
+    font-size: 16px;
+    text-align:center;
+    font-weight: lighter;
+    color:#8692A6;
+}
+.break-line{
+    border: 1px solid #F5F5F5;
+    width:100%;
+    max-width:425px;
+    margin:10px 0;
+}
+@media only screen and (min-width:820px){
+    .head-txt{
+        text-align: left; 
+    }
+    .para{
+        max-width:350px;
+        text-align: left;
+    }
 }

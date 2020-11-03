@@ -1,4 +1,14 @@
-.logo{
-    margin-left:89px;
-    margin-top:61px;
+.small{
+    fill:white;
+}
+.large{
+    fill:#1565D8;
+}
+.svg-large{
+    margin: 14px;
+    width:280px;
+}
+.svg-small{
+    margin-left:14px;
+    width:250px;
 }

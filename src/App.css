@@ -4,3 +4,13 @@
   padding:0;
   display:flex;
 }
+input, a, button{
+  border:0;
+  outline: 0;
+}
+a:link{
+  color:blue;
+}
+a:visited{
+  color:yellow;
+}

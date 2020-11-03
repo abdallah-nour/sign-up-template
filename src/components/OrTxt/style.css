@@ -1,0 +1,11 @@
+.container-or-txt{
+    display: flex;
+    justify-content: space-between;
+    max-width: 350px;
+    margin: 0 auto;
+}
+.container-or-txt hr{
+    border: 1px solid #F5F5F5;
+    width:43%;
+    margin:10px 0;
+}

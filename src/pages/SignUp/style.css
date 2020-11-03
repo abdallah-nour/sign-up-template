@@ -5,9 +5,39 @@
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
 }
-.container-signup{
-    background-color: #1565D8;
-    height:100vh;
-    width:45%;
+.left{
+    background-image:url('../../images/Group\ 1.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* width:100%; */
+    min-height:100vh;
+}
+.left-container{
+    position: relative;
+    max-height:100vh;
+    max-width:450px;
+    margin:0px auto;
+    padding:45px 0 10px 0;
+}
+.right{
+    margin:0px auto;
+}
+.right-container{
+    max-height:100vh;
+    margin:0px auto;
+    max-width:520px;
+    padding:35px 35px;
 }
 
+@media only screen and (min-width:820px){
+    /* .content{display: flex;} */
+.left{width:45%;}
+.right{
+    padding:0px 30px;
+    width:55%;
+    max-width:600px;
+}
+.right-container{
+    padding:40px 0 10px 0;
+}
+}

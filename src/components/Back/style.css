@@ -1,8 +1,15 @@
 .container-back{
-    margin-left:77px;
-    margin-top:74px;
+    margin-left:-2.9vw;
 }
-.back-txt{
-    color:#8692A6;
-    font-size: 16px;
+.back-btn{
+    display: flex;
+    border:0;
+    border-radius:10px;
+    background:rgb(250, 250, 250);
+    padding:4px 8px;
+    cursor:pointer;
+    outline:0;
+}
+.arrow-img{
+    margin-right:3px;
 }
