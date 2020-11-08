@@ -1,10 +1,10 @@
-.container-txt-field{
+.txt-field-container{
     position: relative;
-    max-width:425px;
+    /* max-width:425px;
     width:100%;
     display: flex;
     align-items: center;
-    flex-basis: auto;
+    flex-basis: auto; */
 }
 .txt-field{
     width:100%;
@@ -12,6 +12,7 @@
     margin-top:1px;
     margin-bottom:10px;
     height:8vh;
+    min-height:45px;
     max-height:68px;
     border:1px solid #8692A6;
     padding:0 30px;
@@ -21,18 +22,43 @@
     display: inline-block;
 }
 .valid-span{
-    display: none;
+    visibility: hidden;
     position: absolute;
     right:5%;
-    height: 50%;
+    top:40%;
+    /* height: 40%; */
     font-size:20px;
 }
-.txt-field:valid:focus[type='email']{
-    color:green;
+.popup{
+    position: absolute;
+    /* display: inline-block; */
+    width:60%;
+    max-width: 200px;
+    margin:5px auto;
+    right: 10%;
+    top:8px;
+    transform: translate(30%);
+    cursor: pointer;
 }
-.txt-field:invalid:not(:focus) ~ .valid-span{
-    display: inline;
+.popup-txt{
+    padding: 5px 10px;
+    visibility:hidden;
+    /* width:60%; */
+    color:white;
+    background-color:rgba(255, 0, 0, 0.739);
+    text-align: center;
+    border-radius:6px;
+    padding:8px 5px;
+    position: absolute;
+    z-index: 1;
+    bottom:50%;
 }
-
-
-
+.popup-txt::after{
+    content:'';
+    position:absolute;
+    top:100%;
+    left:50%;
+    margin-left:-5px;
+    border:5px solid;
+    border-color: red transparent transparent transparent
+}

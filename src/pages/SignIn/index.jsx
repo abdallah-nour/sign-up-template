@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 
 import Container from '../Container'
 import Logo from '../../components/Logo';
 import Txt from '../../components/Txt'
 import Quote from '../../components/Quote';
-import Form from '../../components/Form'
+import FormContainer from '../../components/FormContainer'
+import TxtField from '../../components/Txt-field'
 import { MediaList } from '../../components/SocialMediaBtn'
 import OrTxt from '../../components/OrTxt'
 import InputsGenerator from '../../components/InputsGenerator'
-import PasswordPower from '../../components/PasswordPower'
-import CheckBox from '../../components/CheckBox'
 import Button from '../../components/Button'
 import psImage from '../../images/ps-hand.png'
 
@@ -31,27 +31,23 @@ class SignIn extends Component {
 						<img className='ps-image' src={psImage} alt='' />
 					</div>
 				</div>
-				<hr className='page-divide'/>
+				<hr className='page-divide' />
 				<div className='sign-in-right'>
 					<div className='sign-in-right-container'>
-						<Form>
+						<FormContainer>
 							<div className='form-txt-container'>
 								<Txt color='black' fontSize='38px' txtAlign='center' fontWeight='bold'>
 									Join the game!
 							</Txt>
 								<Txt color='#8692A6' fontSize='14px' txtAlign='center' marginTop='5px'>Go inside the best gamers social network!</Txt>
 							</div>
-							<MediaList></MediaList>
+							<MediaList marginTop='20px'></MediaList>
 							<OrTxt margin='3vmin'></OrTxt>
-							<InputsGenerator>
-								{{ type: 'email', name: 'email', descText: 'Your email*', placeholder: 'Write your email', margin:'2vmin'}}
-								{{ type: 'password', name: 'password', descText: 'Choose a password', placeholder: '•••••••••' }}
-							</InputsGenerator>
-							<PasswordPower width='70%' color='#FFC107'></PasswordPower>
-							<CheckBox marginTop='10px' name='terms'>I agree to <a href='#'>terms & conditions</a> </CheckBox>
-							<CheckBox name='news'>I’d like being informed about latest news and tips</CheckBox>
-							<Button marginTop='20px'>Sign up for free</Button>
-						</Form>
+							<TxtField {...{ type: 'email', name: 'email', descText: 'Email', placeholder: 'Write your email', margin: '2vmin' }}></TxtField>
+							<TxtField {...{ type: 'password', name: 'password', descText: 'Password', placeholder: '**********' }}></TxtField>
+							<Button marginTop='20px'>Sign in</Button>
+							<p>Don't have account? <Link to='/SignUp'>SignUp</Link> </p>
+						</FormContainer>
 					</div>
 				</div>
 			</Container>
@@ -60,3 +56,7 @@ class SignIn extends Component {
 }
 
 export default SignIn;
+{/* <InputsGenerator>
+	{{ type: 'email', name: 'email', descText: 'Email', placeholder: 'Write your email', margin: '2vmin' }}
+	{{ type: 'password', name: 'password', descText: 'Password', placeholder: '**********' }}
+</InputsGenerator> */}

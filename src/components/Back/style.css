@@ -9,6 +9,8 @@
     padding:4px 8px;
     cursor:pointer;
     outline:0;
+    width:80px;
+    /* width:100%; */
 }
 .arrow-img{
     margin-right:3px;

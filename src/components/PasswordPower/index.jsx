@@ -1,14 +1,18 @@
+import React, { Component } from 'react'
 import Txt from '../Txt'
 
 import './style.css'
-export default function PasswordPower({color, width}) {
-    return (
-        <div className='power-container'>
-            <div className='fill-container'>
-                <div className='fill' style={{backgroundColor:color, width:width}}>
+export default class PasswordPower extends Component {
+    render() {
+        let { color, width, children } = this.props;
+        return (
+            <div className='power-container' style={{ display: this.props.visibility && 'block' }}>
+                <div className='fill-container'>
+                    <div className='fill' style={{ backgroundColor: color, width: width }}>
+                    </div>
                 </div>
-            </div>
-            <Txt color={color} fontWeight='500'>Not bad but you know you can do it better</Txt>
-        </div>
-    );
+                <Txt color={color} fontWeight='500'>{children}</Txt>
+            </div >
+        );
+    }
 }

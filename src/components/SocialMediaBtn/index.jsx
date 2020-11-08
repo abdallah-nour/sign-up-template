@@ -10,9 +10,9 @@ export function SocialMediaBtn({ children }) {
 }
 
 
-export function MediaList() {
+export function MediaList({ marginTop }) {
     return (
-        <div className='media-list-container'>
+        <div className='media-list-container' style={{ marginTop: marginTop }}>
             <SocialMediaBtn>
                 <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20.649 9.62313H19.895V9.58335H11.47V13.4167H16.7604C15.9886 15.6482 13.9147 17.25 11.47 17.25C8.36819 17.25 5.85333 14.6755 5.85333 11.5C5.85333 8.32458 8.36819 5.75002 11.47 5.75002C12.9018 5.75002 14.2044 6.30298 15.1962 7.20621L17.844 4.49556C16.1721 2.90042 13.9357 1.91669 11.47 1.91669C6.30032 1.91669 2.10889 6.20762 2.10889 11.5C2.10889 16.7924 6.30032 21.0834 11.47 21.0834C16.6397 21.0834 20.8311 16.7924 20.8311 11.5C20.8311 10.8575 20.7665 10.2302 20.649 9.62313Z" fill="#FFC107" />

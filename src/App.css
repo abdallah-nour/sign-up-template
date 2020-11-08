@@ -11,6 +11,7 @@ input, a, button{
 a:link{
   color:blue;
 }
-a:visited{
-  color:yellow;
+.link{
+  display: block;
+  position: absolute;
 }
