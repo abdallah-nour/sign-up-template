@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import * as yup from 'yup'
 import TxtField from '../Txt-field'
 import PasswordPower from '../PasswordPower'
 import CheckBox from '../CheckBox'
 import Button from '../Button'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom'
 import schema, { fieldSchema } from './schema'
 
-class SignUpForm extends Component {
+class SignInForm extends Component {
   state = {
     email: '', password: '', repassword: '', checkbox: false,
     visibility: false,
@@ -65,7 +63,7 @@ class SignUpForm extends Component {
           // <Redirect to="/" />
         })
         .catch(err => {
-          this.setState({isThereError:true});
+          this.setState({ isThereError: true });
           throw new Error('Error in axios post :\n ' + err.message);
           // handle login
         })
@@ -156,4 +154,4 @@ class SignUpForm extends Component {
   }
 }// class END
 
-export default SignUpForm;
+export default SignInForm;

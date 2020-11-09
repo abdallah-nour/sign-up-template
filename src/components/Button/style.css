@@ -12,6 +12,7 @@
     margin-top:10px;
     margin-bottom:10px;
     height:8.5vh;
+    min-height:40px;
     max-height:68px;
     font-size: 16px;
     cursor: pointer;
