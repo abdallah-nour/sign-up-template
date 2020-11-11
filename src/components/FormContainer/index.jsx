@@ -6,6 +6,8 @@ class FormContainer extends Component {
     values: {},
     errors: {}
   }
+  
+
   formSubmit = e => {
     e.preventDefault();
     let { email, password, repassword } = this.state.values;

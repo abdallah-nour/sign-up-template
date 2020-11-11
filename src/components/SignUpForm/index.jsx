@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import * as yup from 'yup'
+import { Redirect } from 'react-router-dom'
 import TxtField from '../Txt-field'
 import PasswordPower from '../PasswordPower'
 import CheckBox from '../CheckBox'
 import Button from '../Button'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom'
 import schema, { fieldSchema } from './schema'
 
 class SignUpForm extends Component {
@@ -16,32 +15,35 @@ class SignUpForm extends Component {
     errors: {},
     isThereError: true,
   }
-  /*
-    fetchData = () => {
-      let { email, password } = this.state;
-      axios.post('https://fake-api-ahmed.herokuapp.com/v1/auth/signup', {
-        email: email,
-        password: password
+
+  fetchData = () => {
+    let { email, password } = this.state;
+    axios.post('https://fake-api-ahmed.herokuapp.com/v1/auth/signup', {
+      email,
+      password
+    })
+      .then(res => {
+        console.log(`valid submit. \n result data:`);
+        console.log(res.data);
+        <Redirect to='/' />
       })
-        .then(res => {
-          console.log(res.data);
-          // <Redirect to="/" />
-        })
-        .catch(err => {
-          throw new Error('Error in axios post :\n ' + err.message);
-        })
-    }
-  */
+      .catch(err => {
+        this.setState({ isThereError: true });
+        throw new Error('Error in asxios post :\n ' + err.message);
+        // handle login
+      })
+  }
+
   formValidate = (data) => {
     schema
       .validate(data, { abortEarly: false }) // abortEarly: false, will still running when error occurred and give us all errors.
       .then(_ => {
         this.setState({ isThereError: false, errors: {} });
-        console.log('here in formValidation in then.');
-        // <Redirect to='/'></Redirect>
+        console.log('Valid form');
       })
       .catch(err => {
         let errors = {};
+        console.log('inValid form');
         err.inner.map((error) => errors[error.path] = error.message);
         this.setState({ isThereError: true, errors });
       });
@@ -49,27 +51,11 @@ class SignUpForm extends Component {
   //
   formSubmit = e => {
     e.preventDefault();
-    let { name, value } = e.target;
-    this.formValidate({ name, value });
+    let { email, password } = this.state;
+    console.log(email, password);
+    this.formValidate({ email, password });
     // this.fetchData();
-    if (!this.state.isThereError) {
-      let { email, password } = this.state;
-      axios.post('https://fake-api-ahmed.herokuapp.com/v1/auth/signup', {
-        email,
-        password
-      })
-        .then(res => {
-          console.log(`valid submit. \n result data:`);
-          console.log(res.data);
-          // handle login
-          // <Redirect to="/" />
-        })
-        .catch(err => {
-          this.setState({isThereError:true});
-          throw new Error('Error in axios post :\n ' + err.message);
-          // handle login
-        })
-    }
+    if (!this.state.isThereError) this.fetchData();
   }
   //
   handleChange = e => {
