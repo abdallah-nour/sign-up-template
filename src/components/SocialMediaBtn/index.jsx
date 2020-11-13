@@ -1,7 +1,7 @@
 import './style.css'
 export function SocialMediaBtn({ children }) {
     return (
-        <a href='#'>
+        <a href='#a'>
             <div className='media-btn-container'>
                 {children}
             </div>

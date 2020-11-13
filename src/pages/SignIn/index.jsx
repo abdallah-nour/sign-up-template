@@ -1,4 +1,3 @@
-import React, { Component, useState } from 'react';
 import { Link } from 'react-router-dom'
 
 import Container from '../Container'
@@ -12,12 +11,12 @@ import psImage from '../../images/ps-hand.png'
 import SignInForm from '../../components/SignInForm'
 
 import './style.css'
-function SignIn({setAuthentication}) {
+function SignIn({ setAuthentication }) {
   return (
     <Container maxWidth='1160px'>
       <div className='sign-in-left'>
         <div className='sign-in-left-container'>
-          <Logo size='large'></Logo> {/* here we can import images and put them as children*/}
+          <Logo size='large' /> {/* here we can import images and put them as children*/}
           <Quote version='2' quoteImgColor='#BABABA'>
             <Txt color='#696F79' lineHeight='38px'>
               I always observe the people who pass by when I ride an escalator. I'll never see most of them again, so I
@@ -28,7 +27,7 @@ function SignIn({setAuthentication}) {
           <img className='ps-image' src={psImage} alt='' />
         </div>
       </div>
-      <hr className='page-divide' />
+      <hr className='page-divide' /> {/* just for mobile layout */}
       <div className='sign-in-right'>
         <div className='sign-in-right-container'>
           <FormContainer>

@@ -1,13 +1,11 @@
 import { Component } from 'react'
-import { BrowserRouter as Router, Link, Switch, Route, Redirect } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom'
 
 import SignUp from './pages/SignUp/index'
 import SignIn from './pages/SignIn'
 import Home from './pages/Home'
 import PrivateRoute from './components/PrivateRoute'
-import axios from './axios.config'
-// import axios from 'axios'
+// import axios from './axios.config'
 
 import './App.css';
 class App extends Component {

@@ -1,7 +1,6 @@
 import React, { Component, useState } from 'react';
 import TxtField from '../Txt-field'
 import Button from '../Button'
-// import axios from 'axios'
 import axios from '../../axios.config'
 import schema from './schema'
 

@@ -1,11 +1,9 @@
 import Txt from '../Txt'
-
 import './style.css'
 
-export default function PasswordPower() {
-  let { color, width, children } = this.props;
+export default function PasswordPower({ color, width, visibility, children }) {
   return (
-    <div className='power-container' style={{ display: this.props.visibility && 'block' }}>
+    <div className='power-container' style={{ display: visibility && 'block' }}>
       <div className='fill-container'>
         <div className='fill' style={{ backgroundColor: color, width: width }}>
         </div>

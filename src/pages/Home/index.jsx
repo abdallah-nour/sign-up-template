@@ -1,6 +1,3 @@
-import { Link } from 'react-router-dom'
-import { useState } from 'react'
-
 export default function Home({ setAuthentication }) {
   return <div style={{ margin: '0 auto' }}>
     <h1>Home Page</h1>
