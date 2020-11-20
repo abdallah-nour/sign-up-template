@@ -1,29 +1,26 @@
-import React, { Component, useReducer } from 'react';
+import { useState, useEffect, useReducer } from 'react';
 import { Redirect } from 'react-router-dom'
 import TxtField from '../Txt-field'
-import PasswordPower from '../PasswordPower'
+import PasswordScore from '../PasswordScore'
 import CheckBox from '../CheckBox'
 import Button from '../Button'
 import axios from 'axios'
 import schema, { fieldSchema } from './schema'
 
-class SignUpForm extends Component {
-  state = {
-    email: '', password: '', repassword: '', checkbox: false,
-    visibility: false,
-    score: {},
-    errors: {},
-    isThereError: true,
-  }
-/**
- * reducer for inputs
- * useState for visibility
- * useState for score
- * useState for errors
- * isThereError
- */
-  fetchData = () => {
-    let { email, password } = this.state;
+const reducerInputs = (state, action) => {
+  if (action.type) return { ...state, [action.type]: action.payload };
+  else console.log(new Error('invalid action type'));
+}
+const initInputs = { email: '', password: '', repassword: '', checkbox: false };
+
+function SignUpForm() {
+  let [inputs, dispatchInputs] = useReducer(reducerInputs, initInputs);
+  let [visibility, setVisibility] = useState(false);
+  let [score, setScore] = useState({});//{length:0, numbers:0,capitalChar:0, smallChar:0,}
+  let [errors, setErrors] = useState({});
+
+  const fetchData = () => {
+    let { email, password } = inputs;
     axios.post('https://fake-api-ahmed.herokuapp.com/v1/auth/signup', {
       email,
       password
@@ -34,118 +31,94 @@ class SignUpForm extends Component {
         <Redirect to='/' />
       })
       .catch(err => {
-        this.setState({ isThereError: true });
-        console.log('Error in asxios post :\n ' + err.message);
+        console.log('Error in axios post :\n ' + err.message);
         // throw new Error('Error in asxios post :\n ' + err.message);
-        // handle login
+        /* handle login */
       })
   }
-
-  formValidate = (data) => {
+  //
+  const formValidate = (data, cb) => {
     schema
-      .validate(data, { abortEarly: false }) // abortEarly: false, will still running when error occurred and give us all errors.
+      .validate(data, { abortEarly: false })  
       .then(_ => {
-        this.setState({ isThereError: false, errors: {} });// this.setstate
+        setErrors({});
+        cb();
         console.log('Valid form');
       })
       .catch(err => {
         let errors = {};
+        err.inner.map((error) => errors[error.path] = error.message);
+        setErrors(errors);
         console.log('inValid form');
-            err.inner.map((error) => errors[error.path] = error.message);
-        this.setState({ isThereError: true, errors });// here
       });
   }
   //
-  formSubmit = e => {
+  const formSubmit = e => {
     e.preventDefault();
-    let { email, password } = this.state;// here 
+    let { email, password } = inputs;
     console.log(email, password);
-    this.formValidate({ email, password }); // here 
-    // this.fetchData();
-    if (!this.state.isThereError) this.fetchData(); // here * 2
+    formValidate({ email, password }, fetchData);
   }
   //
-  handleChange = e => {
+  const handleChange = e => {
     let { name } = e.target;
     let value = ((name === 'checkbox') ? e.target.checked : e.target.value);
-    this.setState({ [name]: value }); // here
-    if (name === "password") this.passwordScore(value);// here
+    dispatchInputs({ type: name, payload: value });
+    if (name === "password") passwordScore(value);// here
   }
-
-  handleBlur = e => {
+  //
+  const handleBlur = e => {
     let { name, value } = e.target;
     fieldSchema(name)
       .validate(value)
       .then((res) => {
-        console.log(res);
-        this.setState(({ errors }) => ({ errors: { ...errors, [name]: '' } })); // here 
+        if (name) setErrors({ ...errors, [name]: '' });
       })
       .catch((err) => {
-        console.log(err);
-        this.setState(({ errors }) => ({ errors: { ...errors, [name]: err.message } })); // here 
+        setErrors({ ...errors, [name]: err.message });
       });
   }
 
-  handleClick = e => {
+  const handleClick = e => {
     let name = e.target.getAttribute('name');
-    let errors = this.state.errors; // here 
-    errors[name] = '';
-    this.setState({ errors }); // here 
+    // let errs =errors; // here 
+    // errs[name] = '';
+    // console.log(errs,'\n' , errors);
+    setErrors({ ...errors, [errors[name]]: '' });
   }
-
-  render() {
-    let { visibility, errors, email, password, repassword, checkbox, score } = this.state; /// here 
-    let totalScore = 5, color, txt;
-    for (const key in score) totalScore += score[key];
-    if (totalScore <= 40) { color = 'red'; txt = 'Very Weak Password.'; }
-    else if (totalScore <= 60) { color = 'orange'; txt = 'Not bad but you know you can do it better.' }
-    else if (totalScore <= 100) { color = 'green'; txt = 'Very Good Password.' }
-
-    return (
-      <>
-        <form className="container-form" onSubmit={this.formSubmit} onChange={this.handleChange} > {/** here 2 */}
-          <TxtField type='email' name='email' descText='Email address*' placeholder='Enter email address' error={errors.email} value={email} onChange={this.handleChange} onBlur={this.handleBlur} onClick={this.handleClick} />{/** here 3 */}
-          <TxtField type='password' name='password' descText='Create password*' placeholder='Password' error={errors.password} value={password} onChange={this.handleChange} onBlur={this.handleBlur} onClick={this.handleClick} />{/** here 3 */}
-          <PasswordPower visibility={visibility} color={color} width={totalScore + '%'}>{txt}</PasswordPower>
-          <TxtField type='password' name='repassword' descText='Repeat password*' placeholder='Repeat password' error={errors.repassword} value={repassword} onChange={this.handleChange} onBlur={this.handleBlur} onClick={this.handleClick} /> {/** here 3 */}
-          <CheckBox name='checkbox' error={errors.checkbox} checked={checkbox} onChange={this.handleChange} onBlur={this.handleBlur} onClick={this.handleClick}>I agree to terms & conditions</CheckBox>{/** here 3 */}
-          <Button name='register' type='submit' >Register Account</Button>
-        </form>
-      </>
-    );
-  }
-  //  //  //  //  //  //  //  //
-  passwordScore = (value) => {
-    this.setState({ score: {} }); // 
-    this.setState({ visibility: true }); //
+  const passwordScore = (value) => {
+    setScore({}); // 
+    setVisibility(true); //
     if (value.length >= 6) {
-      let score = this.state.score; // 
-      score.length = 25;
-      this.setState({ score }); // 
+      setScore({ ...score, 'length': 20 }); // 
     }
     if (/[A-Z]$/.test(value)) {
-      let score = this.state.score; //
-      score.capitalChar = 20;
-      this.setState({ score }); // 
+      setScore({ ...score, 'capitalChar': 20 }); // 
     }
     if (/[a-z]$/.test(value)) {
-      let score = this.state.score;
-      score.smallChar = 20;
-      this.setState({ score });
+      setScore({ ...score, 'smallChar': 20 }); // 
     }
     if (/[0-9]$/.test(value)) {
-      let score = this.state.score;
-      score.numbers = 20;
-      this.setState({ score });
+      setScore({ ...score, 'numbers': 20 }); // 
     }
-    // let { score } = this.state;
-    // let totalScore = 5;
-    // for (const key in score) totalScore += score[key];
-    // this.setState({ total: totalScore });
-    // if (totalScore <= 40) this.setState({ color: 'red', txt: 'Very Weak Password.' })
-    // else if (totalScore <= 60) this.setState({ color: 'orange', txt: 'Not bad but you know you can do it better.' })
-    // else if (totalScore <= 100) this.setState({ color: 'green', txt: 'Very Good Password.' })
   }
-}// class END
+  let totalScore = 5, color, txt;
+  for (const key in score) totalScore += score[key];
+  if (totalScore <= 40) { color = 'red'; txt = 'Very Weak Password.'; }
+  else if (totalScore <= 60) { color = 'orange'; txt = 'Not bad but you know you can do it better.' }
+  else if (totalScore <= 100) { color = 'green'; txt = 'Very Good Password.' }
 
+  return (
+    <>
+      <form className="container-form" onSubmit={formSubmit} onChange={handleChange} > {/** here 2 */}
+        <TxtField type='email' name='email' descText='Email address*' placeholder='Enter email address' error={errors.email} value={inputs.email} onChange={handleChange} onBlur={handleBlur} onClick={handleClick} />{/** here 3 */}
+        <TxtField type='password' name='password' descText='Create password*' placeholder='Password' error={errors.password} value={inputs.password} onChange={handleChange} onBlur={handleBlur} onClick={handleClick} />{/** here 3 */}
+        <PasswordScore visibility={visibility} color={color} score={totalScore + '%'}>{txt}</PasswordScore>
+        <TxtField type='password' name='repassword' descText='Repeat password*' placeholder='Repeat password' error={errors.repassword} value={inputs.repassword} onChange={handleChange} onBlur={handleBlur} onClick={handleClick} /> {/** here 3 */}
+        <CheckBox name='checkbox' error={errors.checkbox} checked={inputs.checkbox} onChange={handleChange} onBlur={handleBlur} onClick={handleClick}>I agree to terms & conditions</CheckBox>{/** here 3 */}
+        <Button name='register' type='submit' >Register Account</Button>
+      </form>
+    </>
+  );
+}
 export default SignUpForm;

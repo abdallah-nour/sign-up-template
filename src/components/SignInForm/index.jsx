@@ -1,79 +1,77 @@
-import React, { Component, useState } from 'react';
+import { useState } from 'react';
 import TxtField from '../Txt-field'
 import Button from '../Button'
 import axios from '../../axios.config'
 import schema from './schema'
+import { Redirect } from 'react-router-dom'
 
-class SignInForm extends Component {
-  state = {
-    email: '', password: '',
-    errors: {},
-    isThereError: true,
-  }
-
-  formValidate = (data) => {
+function SignInForm(props) {
+  let [email, setEmail] = useState('');
+  let [password, setPassword] = useState('');
+  let [errors, setErrors] = useState({});
+  let [isThereError, setIsThereError] = useState(true);
+  // let [user, setUser] = useState({});
+  // put isThereError in errors
+  const formValidate = (data, cb) => {
     schema
       .validate(data, { abortEarly: false }) // abortEarly: false, will still running when error occurred and give us all errors.
       .then(_ => {
-        this.setState({ isThereError: false, errors: {} });
-        console.log('here in formValidation in then.');
+        // setIsThereError(false);
+        setErrors({});
+        cb();
+        console.log('then in formValidation in then.');
       })
       .catch(err => {
         let errors = {};
         err.inner.map((error) => errors[error.path] = error.message);
-        this.setState({ isThereError: true, errors });
+        setIsThereError(true);
+        setErrors(errors);
         console.log('error in form validition');
-      });
+      })
+
   }
-  //
-  formSubmit = e => {
+  const formSubmit = e => {
     e.preventDefault();
-    let { email, password, isThereError } = this.state;
-    this.formValidate({ email, password });
-    console.log(isThereError);
-    if (!isThereError) {
+    // let { email, password, isThereError } = this.state;//
+    formValidate({ email, password }, () => {
       axios()
         .post('/v1/auth/login', {
           email,
           password
         })
         .then(res => {
-          this.setState({ user: res.data });
-          this.props.setAuthentication(true, res.data);
+          props.setUser(res.data);
+          props.setAuthentication(true);
           console.log('TOKEN:', res.data.token);
+          // <Redirect to='/' />
         })
         .catch(err => {
-          this.setState({ isThereError: true });
-          throw new Error('Error in axios post :\n ' + err.message);
+          setIsThereError(true);
+          console.log('Error in axios post :\n ' + err.message);
+          // throw new Error('Error in axios post :\n ' + err.message);
         })
-    }
+    });
+    //
   }
-  //
-  handleChange = e => {
+  const handleChange = e => {
     let { name, value } = e.target;
-    this.setState({ [name]: value });
+    if (name === 'email') setEmail(value);
+    else if (name === 'password') setPassword(value);
   }
-
-  handleClick = e => {
+  const handleClick = e => {
     let name = e.target.getAttribute('name');
-    let errors = this.state.errors;
-    errors[name] = '';
-    this.setState({ errors });
+    let errs = errors;////
+    errs[name] = '';
+    setErrors(errs);
   }
-
-  render() {
-    let { errors, email, password } = this.state;
-    return (
-      <>
-        <form className="container-form" onSubmit={this.formSubmit} onChange={this.handleChange} >
-          <TxtField type='email' name='email' descText='Email address*' placeholder='Email address' error={errors.email} value={email} onChange={this.handleChange} onClick={this.handleClick} />
-          <TxtField type='password' name='password' descText='password*' placeholder='Password' error={errors.password} value={password} onChange={this.handleChange} onClick={this.handleClick} />
-          <Button marginTop='20px'>Sign in</Button>
-        </form>
-      </>
-    );
-  }
+  return (
+    <>
+      <form className="container-form" onSubmit={formSubmit} onChange={handleChange} >
+        <TxtField type='email' name='email' descText='Email address*' placeholder='Email address' error={errors.email} value={email} onChange={handleChange} onClick={handleClick} />
+        <TxtField type='password' name='password' descText='password*' placeholder='Password' error={errors.password} value={password} onChange={handleChange} onClick={handleClick} />
+        <Button marginTop='20px'>Sign in</Button>
+      </form>
+    </>
+  );
 }
-// class END
-
 export default SignInForm;

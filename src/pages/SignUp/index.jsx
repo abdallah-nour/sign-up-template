@@ -4,15 +4,15 @@ import Quote from '../../components/Quote/index'
 import Logo from '../../components/Logo/index'
 import Back from '../../components/Back/index'
 import FormContainer from '../../components/FormContainer'
-import Button from '../../components/Button';
-import OrTxt from '../../components/OrTxt/index';
-import Container from '../Container'
+import Button from '../../components/Button'
+import OrTxt from '../../components/OrTxt/index'
+import Container from '../../components/Container'
 import Txt from '../../components/Txt'
 import SignUpForm from '../../components/SignUpForm'
 
 import gridImg from '../../images/grid-img.svg'
 import quoteImg2 from '../../images/quote-img-2.svg'
-import google from '../../images/google-logo.svg';
+import google from '../../images/google-logo.svg'
 import './style.css'
 
 class SignUp extends Component {
@@ -22,7 +22,7 @@ class SignUp extends Component {
         <div className='left'>
           <div className='left-container'>
             <Logo size="small"></Logo>
-            <Quote >
+            <Quote marginTop='140px' >
               <img className="grid-img" src={gridImg} alt="" />
               <Txt lineHeight='38px'>
                 I always observe the people who pass by when I ride an escalator. I'll never see most of them again, so I

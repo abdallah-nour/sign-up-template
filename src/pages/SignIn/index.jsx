@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import Container from '../Container'
+import Container from '../../components/Container'
 import Logo from '../../components/Logo';
 import Txt from '../../components/Txt'
 import Quote from '../../components/Quote';
@@ -11,13 +11,13 @@ import psImage from '../../images/ps-hand.png'
 import SignInForm from '../../components/SignInForm'
 
 import './style.css'
-function SignIn({ setAuthentication }) {
+function SignIn({ setAuthentication, setUser }) {
   return (
     <Container maxWidth='1160px'>
       <div className='sign-in-left'>
         <div className='sign-in-left-container'>
           <Logo size='large' /> {/* here we can import images and put them as children*/}
-          <Quote version='2' quoteImgColor='#BABABA'>
+          <Quote marginTop='40px' quoteImgColor='#BABABA'>
             <Txt color='#696F79' lineHeight='38px'>
               I always observe the people who pass by when I ride an escalator. I'll never see most of them again, so I
               imagine a lot of things about their lives... about the day ahead of them.
@@ -39,7 +39,7 @@ function SignIn({ setAuthentication }) {
             </div>
             <MediaList marginTop='20px'></MediaList>
             <OrTxt margin='3vmin'></OrTxt>
-            <SignInForm setAuthentication={setAuthentication}></SignInForm>
+            <SignInForm setAuthentication={setAuthentication} setUser={setUser}></SignInForm>
             <p>Don't have account? <Link to='/SignUp'>SignUp</Link> </p>
           </FormContainer>
         </div>

@@ -4,11 +4,19 @@ export default yup.object().shape({
     .string()
     .email('Enter a Valid Email')
     .required('required field')
-  ,
-  password: yup
+    // .test('email', 'This isn\'t email', (value) => {
+    //   console.log(value);
+    //   return value != undefined;
+    // })
+    ,
+    password: yup
     .string()
     .required('required field')
-});
+    // .test('password', 'This isn\'t password', (value) => {
+    //   console.log(value);
+    //   return value != undefined;
+    // })
+  });
 
 export const fieldSchema = (fieldName) => {
   switch (fieldName) {

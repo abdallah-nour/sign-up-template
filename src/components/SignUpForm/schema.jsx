@@ -3,13 +3,13 @@ export default yup.object().shape({
   email: yup
     .string()
     .email('Enter a Valid Email')
-  .required('required field')
+  // .required('required field')
   ,
   password: yup.string().min(4)
     // .matches(/(?=.*?[A-Z])/, 'password must have an upper case char.')
     // .matches(/(?=.*?[a-z])/, 'password must have a lower case char.')
     // .matches(/(?=.*?[0-9])/, 'password must have a number.')
-  //   .required('required field'),
+    // .required('required field'),
 });
 
 export const fieldSchema = (fieldName) => {
