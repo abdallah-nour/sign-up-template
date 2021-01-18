@@ -1,8 +1,37 @@
-
 .checkbox{
-    margin-bottom:10px;
+    margin-bottom:7px;
     margin-right:11px;
 }
 .checkbox-txt{
     font-size:14px;
+}
+.popup-checkbox{
+    position: relative;
+    width:60%;
+    max-width: 200px;
+    margin:5px auto;
+    right: 0%;
+    transform: translate(30%);
+    cursor: pointer;
+}
+.popup-txt-checkbox{
+    padding: 5px 10px;
+    visibility:hidden;
+    color:white;
+    background-color:rgba(255, 0, 0, 0.739);
+    text-align: center;
+    border-radius:6px;
+    padding:8px 5px;
+    position: absolute;
+    z-index: 1;
+    bottom:50%;
+}
+.popup-txt-checkbox::after{
+    content:'';
+    position:absolute;
+    top:100%;
+    left:15%;
+    margin-left:-5px;
+    border:5px solid;
+    border-color: red transparent transparent transparent
 }

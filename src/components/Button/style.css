@@ -12,6 +12,7 @@
     margin-top:10px;
     margin-bottom:10px;
     height:8.5vh;
+    min-height:40px;
     max-height:68px;
     font-size: 16px;
     cursor: pointer;
@@ -24,9 +25,7 @@
 }
 .icon{
     position: absolute;
-    /* width:200px; */
     margin-left:-13vw;
-    /* right:1%; */
 }
 @media only screen and (min-width:820px){
     .icon{

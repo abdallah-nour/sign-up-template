@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-
 import './style.css'
+
 function Logo({ size }) {
     return (
         <a href="#">

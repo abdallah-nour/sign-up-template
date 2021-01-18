@@ -8,6 +8,9 @@
     right:-55%;
     width:40%;
 }
+.sign-in-right{
+    min-width:40%;
+}
 .sign-in-right-container{
     margin: 0 auto;
     width:100%;

@@ -9,7 +9,6 @@
     background-image:url('../../images/Group\ 1.svg');
     background-size: cover;
     background-repeat: no-repeat;
-    /* width:100%; */
     min-height:100vh;
 }
 .left-container{
@@ -30,7 +29,6 @@
 }
 
 @media only screen and (min-width:820px){
-    /* .content{display: flex;} */
 .left{width:45%;}
 .right{
     padding:0px 30px;
